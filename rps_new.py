@@ -9,6 +9,7 @@ compScore = 0
 yourChoice = ""
 compChoice = ""
 counter = 0
+ties = 0
 
 # tkinter functions
 def hide(widget): # the widget in the parameter
@@ -48,22 +49,28 @@ reset_btn = ttk.Button(
     width = 15,)
 reset_btn.grid(column = 2, row = 5, padx = 10, pady = 10)
 """
-# user score text
+# user score label
 yourScore_label = tk.Label(
     root, 
     text = 'Your Score: ' + str(yourScore) + '\n Your Last Choice: ' + yourChoice,
     font = ("Times New Roman",12))
 yourScore_label.grid(column = 0, row = 2, columnspan = 2)
 
-# comp score text
+# comp score label
 compScore_label = tk.Label(
     root, 
     text = ("Computer Score: " + str(compScore) + "\n Computer's Last Choice: " + compChoice),
     font = ("Times New Roman",12))
 compScore_label.grid(column = 3, row = 2, columnspan = 2)
 
+# rounds + ties label
+counter_label = tk.Label(
+        root,
+        text = "Rounds Played: " + str(counter) + "\n Tie Rounds: " + str(ties),
+        font = ("Times New Roman",12))
+counter_label.grid(column = 2, row = 2)
 def result(yourChoice,compChoice):
-    global compScore, yourScore, counter
+    global compScore, yourScore, counter, ties
     if (compChoice == "Rock" and yourChoice == "Scissors") or (compChoice == "Paper" and yourChoice == "Rock") or (compChoice =="Scissors" and yourChoice == "Paper"):
         compScore += 1
         counter += 1
@@ -72,10 +79,13 @@ def result(yourChoice,compChoice):
         counter += 1
     elif compChoice == yourChoice:
         showinfo("Tie!", "Nobody gains a point because both you and the computer chose " + yourChoice + ".")
+        counter += 1
+        ties += 1
 
 def updateScoreboard():
     compScore_label['text'] = "Computer Score: " + str(compScore) + "\n Computer's Last Choice: " + compChoice
     yourScore_label['text'] = "Your Score: " + str(yourScore) + "\n Your Last Choice: " + yourChoice
+    counter_label['text'] = "Rounds Played: " + str(counter) + "\n Tie Rounds: " + str(ties)
 
 def rock():
     global yourChoice, compChoice

@@ -2,6 +2,7 @@ import random
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
+import os
 
 choices = ["Rock", "Paper", "Scissors"]
 yourScore = 0
@@ -109,7 +110,7 @@ def scissors():
     updateScoreboard()
 
 #rock button
-rock_img = tk.PhotoImage(file = r"RPS gui/rock.png")
+rock_img = tk.PhotoImage(file = r"RPS-with-GUI/img/rock.png")
 rock_btn = tk.Button(
         root, 
         image = rock_img, 
@@ -118,7 +119,7 @@ rock_btn = tk.Button(
 rock_btn.grid(column = 0, row = 3, rowspan = 1,padx = 10)
 
 #paper button
-paper_img = tk.PhotoImage(file = r"RPS gui/paper.png")
+paper_img = tk.PhotoImage(file = r"RPS-with-GUI/img/paper.png")
 paper_btn = tk.Button(
         root, 
         image = paper_img,
@@ -127,7 +128,8 @@ paper_btn = tk.Button(
 paper_btn.grid(column = 2, row = 3, rowspan = 1, padx = 10)
 
 # scissors button
-scissors_img = tk.PhotoImage(file = r"RPS gui/scissors.png")
+
+scissors_img = tk.PhotoImage(file = r"RPS-with-GUI/img/scissors.png")
 scissors_btn = tk.Button(
         root, 
         image = scissors_img, 
@@ -135,4 +137,4 @@ scissors_btn = tk.Button(
         )
 scissors_btn.grid(column = 4, row = 3, rowspan = 1, padx = 10)
 
-root.mainloop() 
+root.mainloop()
